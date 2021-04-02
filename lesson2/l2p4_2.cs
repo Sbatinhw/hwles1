@@ -10,18 +10,19 @@ namespace l2p
     {
         public static void Fiscal()
         {
-            string[,] a = new string[,] { { "матраааааааааааааааааааааас", "1209", "2" } };
-            string[] b = new string[] { "info_1", "info_11" };
+            string[,] a = new string[,] { { "матрас", "1209", "2" }, {"подгузники", "900", "1" } };
+            string[] b = new string[] { "Кассовый чек №3889", $"{DateTime.Now}", "Интернет решения ООО" };
 
             Print_all(a, b);
         }
         public static void Print_all(string[,] product_list, string[] info_company)
         {
-            int widgth_fiscal = 20;
+            int widgth_fiscal = 40;
 
 
             line(widgth_fiscal, 1);
             Print_info(info_company, widgth_fiscal);
+            line(widgth_fiscal, 3);
             Print_product(product_list, widgth_fiscal);
             
         }
@@ -65,7 +66,7 @@ namespace l2p
 
         public static void Print_info(string[] info, int line_length)
         {
-
+            //TODO добавить перенос строки если строка длиннее ширины чека
             for(int i = 0; i < info.Length; i++)
             {
                 string sd = info[i];
@@ -98,52 +99,95 @@ namespace l2p
 
         public static void Print_product(string[,] product_array, int line_length)
         {
+            int rows = product_array.GetUpperBound(0) + 1;
+            int sum = 0;
             string start_line = "*  ";
             string end_line = "  *";
-            bool flag = true;
-            string line_1 = "";
-            string line_2 = "";
-            int i = 0;
-            int summ = int.Parse(product_array[i, 1]) * int.Parse(product_array[i, 2]);
-            string product = product_array[i, 0];
 
-            while (flag)
+            for (int i = 0; i < rows; i++)
             {
-                string test_string1 = start_line + product + summ + "р." + end_line;
-                //Console.WriteLine(test_string1);
-                if(test_string1.Length < line_length)
+                bool flag = true;
+                string line_1 = "";
+                string line_2 = "";
+                //int i = 0;
+                int summ = int.Parse(product_array[i, 1]) * int.Parse(product_array[i, 2]);
+                sum += summ;
+                string product = product_array[i, 0];
+
+                while (flag)
                 {
-                    product += " ";
-                    continue;
+                    string test_string1 = start_line + product + summ + "р." + end_line;
+                    if (test_string1.Length < line_length)
+                    {
+                        product += " ";
+                        continue;
+                    }
+                    if (test_string1.Length > line_length)
+                    {
+                        product = product.Substring(0, product.Length - 2) + " ";
+                        continue;
+                    }
+                    line_1 = test_string1;
+                    break;
                 }
-                if (test_string1.Length > line_length)
+                string sd = product_array[i, 2];
+                while (flag)
                 {
-                    product = product.Substring(0, product.Length - 2) + " ";
-                    continue;
+
+                    string test_string2 = start_line + product_array[i, 1] + "р." + " x " + sd + end_line;
+                    if (test_string2.Length < line_length)
+                    {
+                        sd += " ";
+                        continue;
+                    }
+                    line_2 = test_string2;
+                    break;
                 }
-                line_1 = test_string1;
-                break;
-            }
-            string sd = product_array[i, 2];
-            while (flag)
-            {
-                
-                string test_string2 = start_line + product_array[i, 1] + "р." + " x " + sd + end_line;
-                //Console.WriteLine(test_string2);
-                if(test_string2.Length < line_length)
-                {
-                    sd += " ";
-                    continue;
-                }
-                line_2 = test_string2;
-                break;
+
+                Console.WriteLine(line_1 + "\n" + line_2);
+                line(line_length, 3);
+
             }
 
-            Console.WriteLine(line_1 + "\n" + line_2);
-
+            Sum_fiscal(sum, line_length);
+            line(line_length, 1);
         }
         
+        public static void Sum_fiscal(int sum, int line_width)
+        {
+            string start_line = "*  ";
+            string end_line = "  *";
 
+            string str1 = "";
+            string str2 = "";
+            string str3 = "";
+            string total = "ИТОГ";
+            string without_nds = "Без НДС";
+            string full_calc = "Полный расчет";
+            while (true)
+            {
+                str1 = start_line + total + sum + end_line;
+                if (str1.Length < line_width)
+                {
+                    total += " ";
+                    continue;
+                }
+                str2 = start_line + without_nds + sum + end_line;
+                if (str2.Length < line_width)
+                {
+                    without_nds += " ";
+                    continue;
+                }
+                str3 = start_line + full_calc + sum + end_line;
+                if (str3.Length < line_width)
+                {
+                    full_calc += " ";
+                    continue;
+                }
+                break;
+            }
+            Console.WriteLine($"{str1}\n{str2}\n{str3}");
+        }
 
 
     }

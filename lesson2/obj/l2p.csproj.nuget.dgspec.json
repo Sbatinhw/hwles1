@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projvs\\l2p1\\l2p.csproj": {}
+    "C:\\Users\\user\\source\\repos\\hwles1\\lesson2\\l2p.csproj": {}
   },
   "projects": {
-    "D:\\projvs\\l2p1\\l2p.csproj": {
+    "C:\\Users\\user\\source\\repos\\hwles1\\lesson2\\l2p.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projvs\\l2p1\\l2p.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\hwles1\\lesson2\\l2p.csproj",
         "projectName": "l2p",
-        "projectPath": "D:\\projvs\\l2p1\\l2p.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\hwles1\\lesson2\\l2p.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\projvs\\l2p1\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\hwles1\\lesson2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
