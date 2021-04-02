@@ -12,7 +12,7 @@ namespace l2p
             //
             //l2p4.Print_fiscal();
             //l2p4.Print_line_product("Матрасы", 1209, 10, 20);
-            l2p4_2.Fiscal();
+            //l2p4_2.Fiscal();
 
             //l2p5.MounthTemp();
 
