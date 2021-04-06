@@ -17,7 +17,7 @@ namespace l3p
             string[,] field = Create_Field(9, 10);
             // длина коробля, положение (1 - вертикально, 0 - горизонтально),
             // координаты первой точки 
-            int[,] ships = { {3, 1, 2, 1 }, {2, 0, 3, 9 } };
+            int[,] ships = { {3, 1, 2, 1 }, {2, 0, 9, 8 } };
             field = Insert_Ship(field, ships);
 
             Select_field(field);
@@ -94,6 +94,7 @@ namespace l3p
             {
                 if (!Check_Ship(CreateOneShip(ship, i), field))
                 {
+                    Console.WriteLine($"Корабль №{i + 1} не добавлен на поле.");
                     continue;
                 }
                 int pos_x = ship[i, 2];
@@ -124,14 +125,12 @@ namespace l3p
             int columns = field.Length / rows;
             for (int i = 0; i < rows; i++)
             {
-                string print_row = "";
                 for (int j = 0; j < columns; j++)
                 {
-                    print_row += field[i, j];
+                    Console.Write(field[i, j]);
                 }
-                Console.WriteLine($"{print_row}");
+                Console.WriteLine();
             }
-            //Console.WriteLine(rows + "\n" + columns);
         }
         public static string[,] Create_Field(int x, int y)
         {

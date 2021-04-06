@@ -77,12 +77,10 @@ namespace l3p
 
         public static void SelectArray(string[] array)
         {
-            string selectar = "";
             for (int i = 0; i < array.Length; i++)
             {
-                selectar += $"{array[i]}, ";
+                Console.Write($"{array[i]}, ");
             }
-            Console.WriteLine(selectar);
         }
     }
 }
