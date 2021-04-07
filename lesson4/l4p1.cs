@@ -14,10 +14,10 @@ namespace l4p
     {
         public static void FullName()
         {
-
+            Console.WriteLine(AskFLP());
         }
 
-        public static void AskFLP()
+        public static string AskFLP()
         {
             Console.WriteLine("Введите имя:");
             string firstName = Console.ReadLine();
@@ -26,7 +26,15 @@ namespace l4p
             Console.WriteLine("Введите отчество:");
             string patronymic = Console.ReadLine();
 
+            return GetFullName(firstName, lastName, patronymic); 
+
         }
+
+        public static string GetFullName(string firstName, string lastName, string patronymic)
+        {
+            return $"\nИмя: {firstName}\nФамилия: {lastName}\nОтчество: {patronymic}";
+        } 
+
 
     }
 }

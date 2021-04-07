@@ -6,7 +6,11 @@ namespace l4p
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
+            //l4p1.FullName();
+            //l4p2.SumString();
+            //l4p3.YearSeason();
+            l4p4.Fib();
+
+            Console.ReadLine();        }
     }
 }
