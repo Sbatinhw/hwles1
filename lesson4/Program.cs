@@ -9,7 +9,8 @@ namespace l4p
             //l4p1.FullName();
             //l4p2.SumString();
             //l4p3.YearSeason();
-            l4p4.Fib();
+            //l4p4.Fib();
+            l4p5.NormalView();
 
             Console.ReadLine();        }
     }
