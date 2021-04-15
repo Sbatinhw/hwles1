@@ -116,5 +116,113 @@ namespace l6p
         {
             return Process.GetProcesses();
         }
+
+
+        //задание №2
+        /*  Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4,
+            при подаче массива другого размера необходимо бросить исключение MyArraySizeException.
+            Далее метод должен пройтись по всем элементам массива, преобразовать в int, и просуммировать.
+            Если в каком-то элементе массива преобразование не удалось
+            (например, в ячейке лежит символ или текст вместо числа), 
+            должно быть брошено исключение MyArrayDataException, 
+            с детализацией в какой именно ячейке лежат неверные данные.
+            В методе main() вызвать полученный метод, 
+            обработать возможные исключения MySizeArrayException и MyArrayDataException, 
+            и вывести результат расчета.*/
+
+        public static int SummArray(string[,] array_for_check)
+        {
+            int max_rows = 4;
+            int max_columns = 4;
+            int rows = array_for_check.GetUpperBound(0) + 1;
+            int column = array_for_check.Length / rows;
+            int summ = 0;
+            try
+            {
+                if (rows != max_rows || column != max_columns)
+                {
+                    throw new MyArraySizeException("Длина массива не соответствует заданным параметрам");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < column; j++)
+                {
+                    try
+                    {
+                        bool trysumm = int.TryParse(array_for_check[i, j], out int num);
+
+                        if (trysumm)
+                        {
+                            summ += num;
+                        }
+                        else
+                        {
+                            throw new MyArrayDataException(i, j);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+            }
+
+            return summ;
+
+
+        }
+
     }
+
+
+
+
+
+
+
+    [Serializable]
+    public class MyArrayDataException : Exception
+    {
+        string Message { get; set; }
+        public MyArrayDataException() { }
+        public MyArrayDataException(string message)
+            : base(message) { }
+        public MyArrayDataException(string message, Exception inner)
+            : base(message, inner) { }
+
+        public MyArrayDataException(int x, int y)
+        {
+            Message = $"Некорректное значение в ячейке {x} {y}";
+        }
+
+        public override string ToString()
+        {
+            return Message;
+        }
+    }
+
+    [Serializable]
+    public class MyArraySizeException : Exception
+    {
+        public MyArraySizeException() { }
+        public MyArraySizeException(string message)
+            : base(message) { }
+        public MyArraySizeException(string message, Exception inner)
+            : base(message, inner) { }
+
+        public override string ToString()
+        {
+            return Message;
+        }
+
+    }
+
+
 }
