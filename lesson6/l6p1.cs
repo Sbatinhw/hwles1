@@ -190,7 +190,7 @@ namespace l6p
     [Serializable]
     public class MyArrayDataException : Exception
     {
-        string Message { get; set; }
+        string text_exception { get; set; }
         public MyArrayDataException() { }
         public MyArrayDataException(string message)
             : base(message) { }
@@ -199,12 +199,12 @@ namespace l6p
 
         public MyArrayDataException(int x, int y)
         {
-            Message = $"Некорректное значение в ячейке {x} {y}";
+            text_exception = $"Некорректное значение в ячейке {x} {y}";
         }
 
         public override string ToString()
         {
-            return Message;
+            return text_exception;
         }
     }
 
