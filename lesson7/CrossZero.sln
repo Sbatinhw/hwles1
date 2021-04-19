@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossZero", "CrossZero.csproj", "{7254989C-2694-40F8-9817-D1ED0FE50BAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7254989C-2694-40F8-9817-D1ED0FE50BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7254989C-2694-40F8-9817-D1ED0FE50BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7254989C-2694-40F8-9817-D1ED0FE50BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7254989C-2694-40F8-9817-D1ED0FE50BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD718DC4-E0FA-4EE8-8617-1E062A756205}
+	EndGlobalSection
+EndGlobal
