@@ -92,15 +92,8 @@ namespace CrossZero
                         if (win == win_len) { return true; }
 						
 					}
-					
-					
 				}
-				
-				
-				
-			}
-			
-			
+			}	
 		}
 		
 		win = 0;
@@ -116,21 +109,11 @@ namespace CrossZero
 						if (CheckPoint(i, j, sym)) { win++; }
                         else if (!CheckPoint(i, j, sym)) { win = 0; }
                         if (win == win_len) { return true; }
-					}
-					
-					
-				}
-				
-				
-				
-			}
-			
-			
-		}
-		
-		
-		return false;
-		
+					}	
+				}	
+			}	
+		}	
+		return false;	
 	}
 	
 	
@@ -141,7 +124,7 @@ namespace CrossZero
 		int columns = field.Length / rows;
 		int win = 0;
 		
-		for(int x = 0; x < columns ; x++)
+		for(int x = 0; x < rows ; x++)
 		{
 			for(int i = 0; i < rows; i++)
 			{
@@ -154,21 +137,14 @@ namespace CrossZero
                         else if (!CheckPoint(i, j, sym)) { win = 0; }
                         if (win == win_len) { return true; }
 						
-					}
-					
-					
+					}	
 				}
-				
-				
-				
 			}
-			
-			
 		}
 		
 		win = 0;
 		
-		for(int x = 0; x < rows ; x++)
+		for(int x = 0; x < columns ; x++)
 		{
 			for(int i = 0; i < rows; i++)
 			{
@@ -181,20 +157,11 @@ namespace CrossZero
                         else if (!CheckPoint(i, j, sym)) { win = 0; }
                         if (win == win_len) { return true; }
 						
-					}
-					
-					
-				}
-				
-				
-				
-			}
-			
-			
+					}						
+				}	
+			}	
 		}
-		
-		
-		
+		return false;
 	}
 
 
