@@ -12,19 +12,8 @@ namespace CrossZero
         static int size_y = 3;
         static int win_len = 4;
 
-        //static char[,] field = new char[size_y, size_x];
-        //static char[,] field = new char[1, 6] { { 'x', 'y', 'x', 'x', 'x', 'x' } };
-        //static char[,] field = new char[5, 1] { { 'x' }, { 'y' },  { 'x' }, { 'x' }, {'x' } };
-        static char[,] field = new char[6, 6]
-        {
-            {'x','y','x','x','x', 'x' },
-            {'y','y','y','x','y', 'x' },
-            {'x','x','y','x','y', 'x'},
-            {'y','x','x','x','x','x'},
-            {'y','x','x','y','x','x'},
-            {'x','y','x','x','x', 'x' },
-
-        };
+        static char[,] field = new char[size_y, size_x];
+        
 
 
         static char player_dot = 'X';
@@ -82,51 +71,131 @@ namespace CrossZero
             return false;
         }
 
-        public static bool CheckDiagonalRev(char sym)
-        {
-            int rows = field.GetUpperBound(0) + 1;
-            int columns = field.Length / rows;
-
-            int win = 0;
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = columns - 1; j > -1; j--)
-                {
-                    if (columns - i - 1 == j)
-                    {
-                        if (CheckPoint(i, j, sym)) { win++;  }
-                        else if (!CheckPoint(i, j, sym)) { win = 0; }
-                        if (win == win_len) { return true; }
-                    }
-                }
-            }
-
-            return false;
-        }
+        
 
         public static bool CheckDiagonal(char sym)
-        {
-            int rows = field.GetUpperBound(0) + 1;
-            int columns = field.Length / rows;
-            int win = 0;
-
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    if (i == j)
-                    {
-                        if (CheckPoint(i, j, sym)) { win++; }
+	{
+		int rows = field.GetUpperBound(0) + 1;
+		int columns = field.Length / rows;
+		int win = 0;
+		
+		for(int x = 0; x < rows; x++)
+		{
+			for(int i = 0; i < rows; i++)
+			{
+				for(int j = 0; j < columns; j++)
+				{
+					if(i - x == j )
+					{
+						if (CheckPoint(i, j, sym)) { win++; }
                         else if (!CheckPoint(i, j, sym)) { win = 0; }
                         if (win == win_len) { return true; }
-                    }
-                }
-            }
-
-            return false;
-        }
+						
+					}
+					
+					
+				}
+				
+				
+				
+			}
+			
+			
+		}
+		
+		win = 0;
+		
+		for(int x = 0; x < columns; x++)
+		{
+			for(int i = 0; i < rows; i++)
+			{
+				for(int j = 0; j < columns; j++)
+				{
+					if(i == j - x)
+					{
+						if (CheckPoint(i, j, sym)) { win++; }
+                        else if (!CheckPoint(i, j, sym)) { win = 0; }
+                        if (win == win_len) { return true; }
+					}
+					
+					
+				}
+				
+				
+				
+			}
+			
+			
+		}
+		
+		
+		return false;
+		
+	}
+	
+	
+	
+	public static void CheckDiagonalRev(char sym)
+	{
+		int rows = field.GetUpperBound(0) + 1;
+		int columns = field.Length / rows;
+		int win = 0;
+		
+		for(int x = 0; x < columns ; x++)
+		{
+			for(int i = 0; i < rows; i++)
+			{
+				for(int j = columns - 1; j > -1; j--)
+				{
+					
+					if(rows - i + x == j)
+					{
+						if (CheckPoint(i, j, sym)) { win++; }
+                        else if (!CheckPoint(i, j, sym)) { win = 0; }
+                        if (win == win_len) { return true; }
+						
+					}
+					
+					
+				}
+				
+				
+				
+			}
+			
+			
+		}
+		
+		win = 0;
+		
+		for(int x = 0; x < rows ; x++)
+		{
+			for(int i = 0; i < rows; i++)
+			{
+				for(int j = columns - 1; j > -1; j--)
+				{
+					if(columns - i - 1 - x == j )
+					
+					{
+						if (CheckPoint(i, j, sym)) { win++; }
+                        else if (!CheckPoint(i, j, sym)) { win = 0; }
+                        if (win == win_len) { return true; }
+						
+					}
+					
+					
+				}
+				
+				
+				
+			}
+			
+			
+		}
+		
+		
+		
+	}
 
 
         public static bool CheckVertical(char sym)
